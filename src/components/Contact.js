@@ -1,11 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import { Box, Typography, Grid, TextField, Button } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 
 function Contact() {
-  // const handleButtonClick = () => {
-  //   window.location.href = "mailto:thucvinguyen@gmail.com";
-  // };
+  // State variables to hold form input values
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  // Function to handle form submission
+  const handleSubmit = async () => {
+    // The endpoint URL should match the backend server URL and endpoint path
+    const apiUrl = "https://testttt-5xk3.onrender.com/api/contacts";
+
+    try {
+      // Make a POST request to the backend server
+      const response = await axios.post(apiUrl, {
+        name,
+        email,
+        message,
+      });
+
+      // Handle the response as necessary
+      console.log(response.data);
+      // Reset the form fields
+      setName("");
+      setEmail("");
+      setMessage("");
+      // Optionally show a success message to the user
+      alert("Message sent successfully!");
+    } catch (error) {
+      // Handle any errors as necessary
+      console.error("Error sending message:", error);
+      alert("Failed to send message. Make sure you provide valid information.");
+    }
+  };
 
   return (
     <section id="contact">
@@ -21,6 +51,8 @@ function Contact() {
               variant="outlined"
               margin="normal"
               color="primary"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -30,6 +62,8 @@ function Contact() {
               variant="outlined"
               margin="normal"
               color="primary"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </Grid>
           <Grid item xs={12}>
@@ -41,6 +75,8 @@ function Contact() {
               rows={6}
               margin="normal"
               color="primary"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
             />
           </Grid>
           <Grid item xs={12}>
@@ -49,7 +85,7 @@ function Contact() {
               color="primary"
               endIcon={<SendIcon />}
               size="large"
-              // onClick={handleButtonClick}
+              onClick={handleSubmit}
               sx={{
                 mr: 3,
                 backgroundColor: "#D7B98E",
