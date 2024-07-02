@@ -23,9 +23,7 @@ function Project() {
         </Typography>
 
         <Grid container spacing={2}>
-          {/* Left Side */}
           <Grid item xs={12} md={6}>
-            {/* Content for the left side */}
             <Box px={2}>
               <ProjectCard
                 title="Customize Character"
@@ -37,9 +35,7 @@ function Project() {
             </Box>
           </Grid>
 
-          {/* Right Side */}
           <Grid item xs={12} md={6}>
-            {/* Content for the right side */}
             <Box px={2}>
               <ProjectCard
                 title="Movie App"
@@ -47,6 +43,18 @@ function Project() {
                 demoUrl="https://stellar-puffpuff-0d99bc.netlify.app/"
                 githubUrl="https://github.com/thucvinguyen/movie-appp"
                 description="Platform designed for movie enthusiasts to explore, discover, and enjoy a wide range of films. Users can browse through an extensive catalog of movies, organized by genre, release date, popularity, and more."
+              />
+            </Box>
+          </Grid>
+
+          <Grid item xs={12} md={6}>
+            <Box px={2}>
+              <ProjectCard
+                title="GymSpace Project"
+                imageUrl="/project3.png"
+                demoUrl="https://stunning-truffle-539101.netlify.app/"
+                githubUrl="https://github.com/thucvinguyen/final-fe"
+                description="A full-stack website for new gymer to discover workout instructions, as well as tracking their fitness everyday."
               />
             </Box>
           </Grid>
